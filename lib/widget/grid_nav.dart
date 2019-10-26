@@ -49,6 +49,7 @@ class GridNav extends StatelessWidget{
     items.add(_mainItem(context, gridNavItem.mainItem));
     items.add(_doubleItem(context, gridNavItem.item1, gridNavItem.item2));
     items.add(_doubleItem(context, gridNavItem.item3, gridNavItem.item4));
+    //这块这段代码很重要 ,这块是将三个大的组件都能撑满它的父布局，并且平分展示
     List<Widget> exandItems = [];
     items.forEach((item){
       exandItems.add(Expanded(child: item, flex: 1,));
@@ -157,17 +158,5 @@ class GridNav extends StatelessWidget{
       child: widget,
     );
   }
-//  @override
-//  _GridNavState createState() => _GridNavState();
+
 }
-//class _GridNavState extends State<GridNav>{
-//  @override
-//  Widget build(BuildContext context) {
-//    // TODO: implement build
-//    return new Container(
-//      child: _gridNavItems(context),
-//    );
-//  }
-//
-//
-//}

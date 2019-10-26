@@ -8,6 +8,7 @@ import 'package:flutter_xiecheng/model/gridnav_model.dart';
 import 'package:flutter_xiecheng/model/home_model.dart';
 import 'package:flutter_xiecheng/widget/grid_nav.dart';
 import 'package:flutter_xiecheng/widget/local_nav.dart';
+import 'package:flutter_xiecheng/widget/sub_nav.dart';
 //滚动变化的高度
 const APPBAR_SCROLL_OFFSET = 100.0;
 
@@ -25,6 +26,7 @@ class _HomepageState extends State<Homepage>{
   double appBarAlpha = 0.0;
   String resultString = "";
   List<CommonModel> localNavlist = [];
+  List<CommonModel> subNavlist = [];
   GridnavModel gridnavmodel;
 
   @override
@@ -50,6 +52,7 @@ class _HomepageState extends State<Homepage>{
       HomeModel model = await HomeDao.featch();
       setState(() {
         localNavlist = model.localNavList;
+        subNavlist = model.subNavList;
         gridnavmodel = model.graidNav;
       });
     }catch (e) {
@@ -125,6 +128,10 @@ class _HomepageState extends State<Homepage>{
                   Padding(
                     padding: new EdgeInsets.fromLTRB(7, 4, 7, 4),
                     child: GridNav(gridnavModel: gridnavmodel,),
+                  ),
+                  Padding(
+                    padding: new EdgeInsets.fromLTRB(7, 4, 7, 4),
+                    child: SubNav(subNavList: subNavlist,),
                   ),
                   Container(
                     height: 800,
