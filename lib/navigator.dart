@@ -18,8 +18,10 @@ class _NavigatorState extends State<Navigators> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      //分页控制器
       body: new PageView(
-
+        //
+        scrollDirection: Axis.vertical,
         controller: _controller,
         //pageview包含的控制器
         children: <Widget>[
