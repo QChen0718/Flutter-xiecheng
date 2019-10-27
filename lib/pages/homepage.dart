@@ -3,11 +3,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import "package:flutter_swiper/flutter_swiper.dart";
 import 'package:flutter_xiecheng/dao/home_dao.dart';
+import 'package:flutter_xiecheng/model/Sales_box_model.dart';
 import 'package:flutter_xiecheng/model/common_model.dart';
 import 'package:flutter_xiecheng/model/gridnav_model.dart';
 import 'package:flutter_xiecheng/model/home_model.dart';
 import 'package:flutter_xiecheng/widget/grid_nav.dart';
 import 'package:flutter_xiecheng/widget/local_nav.dart';
+import 'package:flutter_xiecheng/widget/sales_box.dart';
 import 'package:flutter_xiecheng/widget/sub_nav.dart';
 //滚动变化的高度
 const APPBAR_SCROLL_OFFSET = 100.0;
@@ -28,7 +30,7 @@ class _HomepageState extends State<Homepage>{
   List<CommonModel> localNavlist = [];
   List<CommonModel> subNavlist = [];
   GridnavModel gridnavmodel;
-
+  SalesBoxModel salesBoxModel;
   @override
   void initState() {
       super.initState();
@@ -54,6 +56,7 @@ class _HomepageState extends State<Homepage>{
         localNavlist = model.localNavList;
         subNavlist = model.subNavList;
         gridnavmodel = model.graidNav;
+        salesBoxModel = model.salesBox;
       });
     }catch (e) {
       // 错误处理
@@ -132,6 +135,10 @@ class _HomepageState extends State<Homepage>{
                   Padding(
                     padding: new EdgeInsets.fromLTRB(7, 4, 7, 4),
                     child: SubNav(subNavList: subNavlist,),
+                  ),
+                  Padding(
+                    padding: new EdgeInsets.fromLTRB(7, 4, 7, 4),
+                    child: SalesBox(salesBoxModel: salesBoxModel,),
                   ),
                   Container(
                     height: 800,

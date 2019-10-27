@@ -56,6 +56,7 @@ class SubNav extends StatelessWidget{
 
   Widget _item(BuildContext context,CommonModel model){
     //添加手势
+    //Expanded 类似于自动布局 会根据子控件的大小来设置父控件的大小，可以自适应子控件
     return Expanded(
       flex: 1,
         child: GestureDetector(
