@@ -41,6 +41,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_boost:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "feature/flutter_1.9_upgrade"
+      resolved-ref: "675bbce4fec4b7f577bd6f46dbce6fb715355a2a"
+      url: "https://github.com/alibaba/flutter_boost.git"
+    source: git
+    version: "0.1.54"
   flutter_page_indicator:
     dependency: transitive
     description:

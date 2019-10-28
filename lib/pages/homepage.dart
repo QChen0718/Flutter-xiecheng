@@ -73,6 +73,7 @@ class _HomepageState extends State<Homepage>{
     }
     return null;
   }
+  //列表滑动监听方法
   _onScroll(offset) {
     double alpha = offset / APPBAR_SCROLL_OFFSET;
     if (alpha < 0.0){
@@ -140,35 +141,7 @@ class _HomepageState extends State<Homepage>{
           //设置轮播图高度
           height: 160,
           //Swiper 轮播图三方组件
-          child: Swiper(
-            itemCount: bannerList.length,
-            //是否自动播放
-            autoplay: true,
-            //设置轮播组件的内容
-            itemBuilder: (BuildContext context, int index){
-              CommonModel model = bannerList[index];
-              return GestureDetector(
-                onTap: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => WebView(
-                        url: model.url,
-                        statusBarColor: model.statusBarColor,
-                        hideAppBar: model.hideAppBar,
-                        title: model.title,
-//            backForbid: true,
-                      ))
-                  );
-                },
-                child: Image.network(
-                  bannerList[index].icon,
-                  //图片展示模式
-                  fit: BoxFit.fill,
-                ),
-              );
-            },
-            //添加轮播图指示器
-            pagination: SwiperPagination(),
-          ),
+          child: bannerView,
         ),
         Padding(
           padding: new EdgeInsets.fromLTRB(7, 4, 7, 4),
@@ -186,10 +159,6 @@ class _HomepageState extends State<Homepage>{
           padding: new EdgeInsets.fromLTRB(7, 4, 7, 4),
           child: SalesBox(salesBoxModel: salesBoxModel,),
         ),
-        Container(
-          height: 800,
-          child: ListTile(title: new Text(resultString),),
-        )
       ],
     );
   }
@@ -206,6 +175,37 @@ class _HomepageState extends State<Homepage>{
           ),
         ),
       ),
+    );
+  }
+  Widget get bannerView{
+    return Swiper(
+      itemCount: bannerList.length,
+      //是否自动播放
+      autoplay: true,
+      //设置轮播组件的内容
+      itemBuilder: (BuildContext context, int index){
+        CommonModel model = bannerList[index];
+        return GestureDetector(
+          onTap: (){
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => WebView(
+                  url: model.url,
+                  statusBarColor: model.statusBarColor,
+                  hideAppBar: model.hideAppBar,
+                  title: model.title,
+//            backForbid: true,
+                ))
+            );
+          },
+          child: Image.network(
+            bannerList[index].icon,
+            //图片展示模式
+            fit: BoxFit.fill,
+          ),
+        );
+      },
+      //添加轮播图指示器
+      pagination: SwiperPagination(),
     );
   }
 }

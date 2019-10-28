@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_xiecheng/model/common_model.dart';
 import 'package:flutter_xiecheng/model/gridnav_model.dart';
 import 'package:flutter_xiecheng/widget/webview.dart';
-
+//
 class LocalNav extends StatelessWidget{
   final List<CommonModel> localNavList;
   //@required 表示必填参数
@@ -16,9 +16,7 @@ class LocalNav extends StatelessWidget{
       decoration: BoxDecoration(
           color: Colors.white,
           //设置圆角
-          borderRadius: BorderRadius.all(
-              Radius.circular(6)
-          )
+          borderRadius: BorderRadius.circular(6)
       ),
       child: Padding(
         padding: EdgeInsets.all(7),

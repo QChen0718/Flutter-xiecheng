@@ -29,6 +29,11 @@ dependencies:
   http: ^0.12.0+1
   #web网页显示三方库
   flutter_webview_plugin: ^0.3.4
+  #添加flutter_boost三方库，该库可以使flutter与原生进行交互
+  flutter_boost:
+    git:
+      url: 'https://github.com/alibaba/flutter_boost.git'
+      ref: 'feature/flutter_1.9_upgrade'
 
 dev_dependencies:
   flutter_test:
