@@ -25,6 +25,7 @@ class _SearchListState extends State<SearchList>{
     return Row(
       children: <Widget>[
         new Container(
+          margin: EdgeInsets.only(top: 10,left: 15),
           child: new Image.asset(imagelist[index]),
         )
       ],
