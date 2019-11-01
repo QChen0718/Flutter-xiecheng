@@ -12,6 +12,7 @@ import 'package:flutter_xiecheng/widget/loading_container.dart';
 import 'package:flutter_xiecheng/widget/local_nav.dart';
 import 'package:flutter_xiecheng/widget/sales_box.dart';
 import 'package:flutter_xiecheng/widget/sub_nav.dart';
+import 'package:flutter_xiecheng/widget/test_list.dart';
 import 'package:flutter_xiecheng/widget/webview.dart';
 //滚动变化的高度
 const APPBAR_SCROLL_OFFSET = 100.0;
@@ -159,6 +160,10 @@ class _HomepageState extends State<Homepage>{
           padding: new EdgeInsets.fromLTRB(7, 4, 7, 4),
           child: SalesBox(salesBoxModel: salesBoxModel,),
         ),
+        Padding(
+          padding: new EdgeInsets.fromLTRB(7, 4, 7, 4),
+          child: TestList(),
+        )
       ],
     );
   }

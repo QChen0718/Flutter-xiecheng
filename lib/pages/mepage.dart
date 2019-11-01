@@ -8,6 +8,12 @@ class Mepage extends StatelessWidget{
       appBar: AppBar(
         title: new Text("我的"),
       ),
+      body: ListView.builder(
+        itemCount: 20,
+          itemBuilder: (BuildContext context, int index){
+            return Text('测试列表');
+          }
+      ),
     );
   }
 
