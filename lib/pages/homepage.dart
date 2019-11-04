@@ -9,6 +9,7 @@ import 'package:flutter_xiecheng/model/gridnav_model.dart';
 import 'package:flutter_xiecheng/model/home_model.dart';
 import 'package:flutter_xiecheng/pages/circlepage.dart';
 import 'package:flutter_xiecheng/pages/searchpage.dart';
+import 'package:flutter_xiecheng/pages/speakpage.dart';
 import 'package:flutter_xiecheng/widget/grid_nav.dart';
 import 'package:flutter_xiecheng/widget/loading_container.dart';
 import 'package:flutter_xiecheng/widget/local_nav.dart';
@@ -194,6 +195,7 @@ class _HomepageState extends State<Homepage>{
                 inputBoxClick: _jumpToSearch,//跳转到搜索页面
                 speakClick: _jumpToSpeak,//跳转到语音搜索页面
                 leftButtonClick: _jumpToSelectCity, //跳转到选择城市页面
+                rightButtonClick: _jumpToMessage, //跳转到消息中心界面
               ),
             ),
           ),
@@ -240,15 +242,22 @@ class _HomepageState extends State<Homepage>{
   //跳转到搜索页面的事件
   _jumpToSearch(){
       Navigator.push(context, MaterialPageRoute(builder: (context){
-        return Circlepage(hidenLeft: false,hint: SEARCH_BAR_DEFAULT_TEXT,);
+        return Circlepage(hidenLeft: false,hint: SEARCH_BAR_DEFAULT_TEXT,keyword: '1',);
       }));
   }
   //跳转到语音搜索页面事件
   _jumpToSpeak(){
+    Navigator.push(context, MaterialPageRoute(builder: (context){
+      return SpeakPage();
+    }));
 
   }
   //跳转到城市选择页面事件
   _jumpToSelectCity(){
+
+  }
+  //跳转到消息中心页面事件
+  _jumpToMessage(){
 
   }
 }

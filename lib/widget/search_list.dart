@@ -80,6 +80,7 @@ class _SearchListState extends State<SearchList>{
     return RichText(text: TextSpan(children: spans));
   }
   _subtitle(SearchItem item){
+    //RichText 展示富文本的text
     return RichText(text: TextSpan(
       children: <TextSpan>[
        TextSpan(

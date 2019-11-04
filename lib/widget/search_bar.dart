@@ -16,7 +16,17 @@ class SearchBar extends StatefulWidget{
   final void Function() inputBoxClick;
   final ValueChanged<String> onChaned; //内容变化的回调
 
-  const SearchBar({Key key, this.enabled = true, this.hideLeft = true, this.searchBarType = SearchBarType.normal, this.hint, this.defaultText, this.leftButtonClick, this.rightButtonClick, this.speakClick, this.inputBoxClick, this.onChaned}) : super(key: key);
+  const SearchBar({Key key,
+    this.enabled = true,
+    this.hideLeft = true,
+    this.searchBarType = SearchBarType.normal,
+    this.hint,
+    this.defaultText,
+    this.leftButtonClick,
+    this.rightButtonClick,
+    this.speakClick,
+    this.inputBoxClick,
+    this.onChaned}) : super(key: key);
   @override
   _SearchBarState createState() => _SearchBarState();
 
@@ -102,15 +112,7 @@ class _SearchBarState extends State<SearchBar>{
       ),
     );
   }
-  //封装的控件方法增加点击效果
-  _wrapTap(Widget child, void Function() callback){
-   return GestureDetector(
-     onTap: (){
-       if (callback != null) callback();
-     },
-     child: child,
-   );
-  }
+
   //自定制输入框样式
   _inputBox(){
    //输入框背景颜色
@@ -180,6 +182,15 @@ class _SearchBarState extends State<SearchBar>{
           )
         ],
       ),
+    );
+  }
+  //封装的控件方法增加点击效果
+  _wrapTap(Widget child, void Function() callback){
+    return GestureDetector(
+      onTap: (){
+        if (callback != null) callback();
+      },
+      child: child,
     );
   }
   //输入框变化监听方法

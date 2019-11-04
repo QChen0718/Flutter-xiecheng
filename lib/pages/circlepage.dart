@@ -21,6 +21,17 @@ class Circlepage extends StatefulWidget{
 class _SearchpageState extends State<Circlepage>{
   SearchModel searchModel;
   String keyword;
+  //初始化状态方法
+  @override
+  void initState() {
+    // TODO: implement initState
+    if(widget.keyword!=null){
+      setState(() {
+        _onTextChange(widget.keyword);
+      });
+    }
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -32,6 +43,7 @@ class _SearchpageState extends State<Circlepage>{
             removeTop: true,
             context: context,
             child: new Expanded(
+                flex: 1,
                 child: SearchList(searchModel: searchModel,)
             ),
           ),
@@ -44,6 +56,7 @@ class _SearchpageState extends State<Circlepage>{
     return Column(
       children: <Widget>[
         new Container(
+          //装饰器
           decoration: BoxDecoration(
             gradient: LinearGradient(
               //APPbar渐变遮罩背景
@@ -64,6 +77,9 @@ class _SearchpageState extends State<Circlepage>{
               hint: widget.hint,
               searchBarType: SearchBarType.normal,
               onChaned: _onTextChange,
+              leftButtonClick: _jumpToHome,
+              rightButtonClick: _searchClick,
+              inputBoxClick: _jumpToSpeak,
             ),
           ),
         ),
@@ -100,5 +116,15 @@ class _SearchpageState extends State<Circlepage>{
         print(error);
       });
     });
+  }
+  _jumpToHome(){
+    Navigator.pop(context);
+  }
+  //跳转到语音搜索页面
+  _jumpToSpeak(){
+
+  }
+  _searchClick(){
+    print('搜索按钮被点击');
   }
 }
