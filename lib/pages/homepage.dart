@@ -7,16 +7,19 @@ import 'package:flutter_xiecheng/model/Sales_box_model.dart';
 import 'package:flutter_xiecheng/model/common_model.dart';
 import 'package:flutter_xiecheng/model/gridnav_model.dart';
 import 'package:flutter_xiecheng/model/home_model.dart';
+import 'package:flutter_xiecheng/pages/circlepage.dart';
+import 'package:flutter_xiecheng/pages/searchpage.dart';
 import 'package:flutter_xiecheng/widget/grid_nav.dart';
 import 'package:flutter_xiecheng/widget/loading_container.dart';
 import 'package:flutter_xiecheng/widget/local_nav.dart';
 import 'package:flutter_xiecheng/widget/sales_box.dart';
+import 'package:flutter_xiecheng/widget/search_bar.dart';
 import 'package:flutter_xiecheng/widget/sub_nav.dart';
 import 'package:flutter_xiecheng/widget/test_list.dart';
 import 'package:flutter_xiecheng/widget/webview.dart';
 //滚动变化的高度
 const APPBAR_SCROLL_OFFSET = 100.0;
-
+const SEARCH_BAR_DEFAULT_TEXT = '网红打卡地 景点 酒店 美食';
 class Homepage extends StatefulWidget {
   @override
   _HomepageState createState() => _HomepageState();
@@ -168,18 +171,39 @@ class _HomepageState extends State<Homepage>{
     );
   }
   Widget get appBar{
-    return Opacity(
-      opacity: appBarAlpha,
-      child: Container(
-        height: 80,
-        decoration: BoxDecoration(color: Colors.white),
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.only(top: 20),
-            child: Text('首页',style: TextStyle(fontSize: 18),),
+    return Column(
+      children: <Widget>[
+          new Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                //APPbar渐变遮罩背景
+                  colors:[Color(0x66000000),Colors.transparent],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+            child: Container(
+              padding: EdgeInsets.only(top: 20),
+              height: 80,
+              decoration: BoxDecoration(
+                color: Color.fromARGB((appBarAlpha*255).toInt(), 255, 255, 255)
+              ),
+              child: SearchBar(
+                searchBarType: appBarAlpha > 0.2 ? SearchBarType.homeLight:SearchBarType.home,
+                defaultText: SEARCH_BAR_DEFAULT_TEXT,
+                inputBoxClick: _jumpToSearch,//跳转到搜索页面
+                speakClick: _jumpToSpeak,//跳转到语音搜索页面
+                leftButtonClick: _jumpToSelectCity, //跳转到选择城市页面
+              ),
+            ),
           ),
-        ),
-      ),
+        new Container(
+          height: appBarAlpha > 0.2 ? 1.5 : 0,
+          decoration: BoxDecoration(
+            boxShadow: [BoxShadow(color: Colors.black12,blurRadius: 0.5)]
+          ),
+        )
+      ],
     );
   }
   Widget get bannerView{
@@ -212,6 +236,20 @@ class _HomepageState extends State<Homepage>{
       //添加轮播图指示器
       pagination: SwiperPagination(),
     );
+  }
+  //跳转到搜索页面的事件
+  _jumpToSearch(){
+      Navigator.push(context, MaterialPageRoute(builder: (context){
+        return Circlepage(hidenLeft: false,hint: SEARCH_BAR_DEFAULT_TEXT,);
+      }));
+  }
+  //跳转到语音搜索页面事件
+  _jumpToSpeak(){
+
+  }
+  //跳转到城市选择页面事件
+  _jumpToSelectCity(){
+
   }
 }
 
