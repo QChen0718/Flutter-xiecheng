@@ -2,7 +2,7 @@ import 'package:flutter_xiecheng/model/home_model.dart';
 import 'package:flutter_xiecheng/model/search_model.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'package:http/http.dart' as http; //去个别名叫 http
+import 'package:http/http.dart' as http; //取个别名叫 http
 
 class SearchDao{
   static Future<SearchModel> featch(String url, String text) async {

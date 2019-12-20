@@ -1,7 +1,7 @@
 import 'package:flutter_xiecheng/model/home_model.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'package:http/http.dart' as http; //去个别名叫 http
+import 'package:http/http.dart' as http; //取个别名叫 http
 
 const HOME_URL = 'http://www.devio.org/io/flutter_app/json/home_page.json';
 class HomeDao{
