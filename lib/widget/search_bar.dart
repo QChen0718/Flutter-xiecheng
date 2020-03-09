@@ -17,10 +17,15 @@ class SearchBar extends StatefulWidget{
   final ValueChanged<String> onChaned; //内容变化的回调
 
   const SearchBar({Key key,
+    //是否可编辑
     this.enabled = true,
+    //隐藏左侧按钮
     this.hideLeft = true,
+    //搜索栏类型
     this.searchBarType = SearchBarType.normal,
+    //提示文案
     this.hint,
+    //默认文案
     this.defaultText,
     this.leftButtonClick,
     this.rightButtonClick,
@@ -33,6 +38,7 @@ class SearchBar extends StatefulWidget{
 }
 class _SearchBarState extends State<SearchBar>{
   bool showClear = false;
+  // textfield 通过TextEditingController 监听内容变化
  final TextEditingController _controller = TextEditingController();
  @override
   void initState() {
@@ -51,6 +57,7 @@ class _SearchBarState extends State<SearchBar>{
     // TODO: implement build
     return widget.searchBarType == SearchBarType.normal ? _genNormalSearch(): _genHomeSearch();
   }
+  //创建默认searchbar 方法
   _genNormalSearch(){
    return Container(
      child: Row(
@@ -73,6 +80,7 @@ class _SearchBarState extends State<SearchBar>{
      ),
    );
   }
+  //创建首页searchbar 方法
   _genHomeSearch(){
     return Container(
       child: Row(

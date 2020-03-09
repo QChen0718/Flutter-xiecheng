@@ -60,7 +60,8 @@ class _HomepageState extends State<Homepage>{
 //      });
   //第二种  async  await 组合网络请求方法
     try {
-      HomeModel model = await HomeDao.featch();
+      Map json = await HomeDao.featch();
+      HomeModel model = HomeModel.fromJson(json);
       setState(() {
         localNavlist = model.localNavList;
         subNavlist = model.subNavList;

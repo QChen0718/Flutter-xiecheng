@@ -16,7 +16,7 @@ class WebView extends StatefulWidget{
   final bool  hideAppBar;
   //是否禁止返回
   final bool backForbid;
-  //是否返回
+
 
   const WebView({Key key, this.url, this.statusBarColor, this.title, this.hideAppBar, this.backForbid = false}) : super(key: key);
   @override
@@ -29,6 +29,7 @@ class _WebViewState extends State<WebView>{
   StreamSubscription<String> _onUrlChanged;
   StreamSubscription<WebViewStateChanged> _onStateChanged;
   StreamSubscription<WebViewHttpError> _onHttpError;
+  //是否返回
   bool exiting = false;
   @override
   void initState() {
@@ -112,17 +113,17 @@ class _WebViewState extends State<WebView>{
           Expanded(
               child: WebviewScaffold(
                 url: widget.url,
-            //是否支持缩放
-            withZoom: true,
-            //是否本地缓存
-            withLocalStorage: true,
-            //设为默认隐藏
-            hidden: true,
-            //设置加载网页的加载指示器
-            initialChild: Container(
-              color: Colors.white,
-              child: Center(
-                child: Text('加载中...'),
+                //是否支持缩放
+                withZoom: true,
+                //是否本地缓存
+                withLocalStorage: true,
+                //设为默认隐藏
+                hidden: true,
+                //设置加载网页的加载指示器
+                initialChild: Container(
+                  color: Colors.white,
+                  child: Center(
+                    child: Text('加载中...'),
               ),
             ),
           )

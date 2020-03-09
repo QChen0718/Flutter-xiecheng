@@ -112,7 +112,7 @@ class GridNav extends StatelessWidget{
       children: <Widget>[
         // Expanded 设置垂直方向展开
         Expanded(
-          child: _item(context, topItem, true),
+          child: _gesterWidget(context, _item(context, topItem, true), topItem) ,
         ),
         Expanded(
           child: _item(context, bottomItem, false),
@@ -132,11 +132,11 @@ class GridNav extends StatelessWidget{
                 bottom: first?borderSide:BorderSide.none,
               )
           ),
-          child: _gesterWidget(context, Center(
+          child: Center(
             child: new Text(model.title,
                style: new TextStyle(fontSize: 14, color: Colors.white),
                textAlign: TextAlign.center,)
-          ), model)
+          ),
       ),
     );
   }
