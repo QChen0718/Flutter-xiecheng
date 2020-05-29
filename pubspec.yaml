@@ -35,6 +35,8 @@ dependencies:
       url: 'https://github.com/alibaba/flutter_boost.git'
       ref: 'feature/flutter_1.9_upgrade'
 
+  dio: ^3.0.9
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

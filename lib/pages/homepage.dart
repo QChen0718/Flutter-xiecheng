@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import "package:flutter_swiper/flutter_swiper.dart";
 import 'package:flutter_xiecheng/dao/home_dao.dart';
+import 'package:flutter_xiecheng/dao/net_util.dart';
 import 'package:flutter_xiecheng/model/Sales_box_model.dart';
 import 'package:flutter_xiecheng/model/common_model.dart';
 import 'package:flutter_xiecheng/model/gridnav_model.dart';
@@ -43,7 +44,8 @@ class _HomepageState extends State<Homepage>{
   @override
   void initState() {
       super.initState();
-      _handleRefresh();
+//      _handleRefresh();
+    requestData();
 
   } //初始化方法
   //加载网路数据
@@ -78,6 +80,23 @@ class _HomepageState extends State<Homepage>{
       });
     }
     return null;
+  }
+  //请求数据
+  void requestData(){
+//    var params = {'username':'xxx','password':'xxx'};
+    NetUtil.homedata(null,success: (response){
+      HomeModel model = HomeModel.fromJson(response);
+      setState(() {
+        localNavlist = model.localNavList;
+        subNavlist = model.subNavList;
+        gridnavmodel = model.graidNav;
+        salesBoxModel = model.salesBox;
+        bannerList = model.bannerList;
+        _loding = false;
+      });
+    },failure: (error){
+
+    });
   }
   //列表滑动监听方法
   _onScroll(offset) {
